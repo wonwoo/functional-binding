@@ -18,7 +18,7 @@ class OrdersProcesses {
             it.map { message ->
                 logger.info("rabbit message : $message")
                 message.map(String::toUpperCase)
-                    .also { upperMessage->
+                    .also { upperMessage ->
                         logger.info("sender kafka message : $upperMessage")
                     }
             }
