@@ -17,9 +17,10 @@ class OrdersProcesses {
         return Function {
             it.map { message ->
                 logger.info("rabbit message : $message")
-                val upperCaseMessage = message.map(String::toUpperCase)
-                logger.info("sender kafka message : $upperCaseMessage")
-                upperCaseMessage
+                message.map(String::toUpperCase)
+                    .also { upperMessage->
+                        logger.info("sender kafka message : $upperMessage")
+                    }
             }
         }
     }
